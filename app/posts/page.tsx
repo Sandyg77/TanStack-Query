@@ -3,7 +3,7 @@
 import usePosts from "../hooks/usePosts";
 
 export default function PostsPage() {
-  const { data, isPending, error } = usePosts();
+  const { data, isPending, error, refetch } = usePosts();
 
   if (isPending) {
     return <div>Loading...</div>;
@@ -28,6 +28,17 @@ export default function PostsPage() {
             </li>
           ))}
         </ul>
+        <button
+          style={{
+            backgroundColor: "blue",
+            color: "white",
+            padding: "10px 15px",
+            textDecoration: "none",
+          }}
+          onClick={() => refetch()}
+        >
+          Refetch
+        </button>
       </div>
     </>
   );
